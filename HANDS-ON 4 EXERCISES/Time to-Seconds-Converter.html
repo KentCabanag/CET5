@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time to Seconds Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #0078d4;
+        }
+
+        p {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0078d4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005ba0;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Time to Seconds Converter</h2>
+        <p>Enter the number of hours:</p>
+        <input type="number" id="hours">
+        <p>Enter the number of minutes:</p>
+        <input type="number" id="minutes">
+        <p>Enter the number of seconds:</p>
+        <input type="number" id="seconds">
+        <button onclick="convertToSeconds()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertToSeconds() {
+            var hours = parseInt(document.getElementById('hours').value) || 0;
+            var minutes = parseInt(document.getElementById('minutes').value) || 0;
+            var seconds = parseInt(document.getElementById('seconds').value) || 0;
+
+            var totalSeconds = hours * 3600 + minutes * 60 + seconds;
+            var resultElement = document.getElementById('result');
+            resultElement.textContent = 'Total seconds: ' + totalSeconds;
+        }
+    </script>
+</body>
+</html>

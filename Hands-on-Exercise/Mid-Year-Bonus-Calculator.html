@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mid-Year Bonus Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #container {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 300px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Mid-Year Bonus Calculator</h1>
+        <p>Enter the number of years of service:</p>
+        <input type="number" id="yearsOfService">
+        <p>Enter the monthly salary:</p>
+        <input type="number" id="monthlySalary">
+        <button onclick="calculateBonus()">Calculate Bonus</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateBonus() {
+            const yearsOfService = parseInt(document.getElementById('yearsOfService').value);
+            const monthlySalary = parseFloat(document.getElementById('monthlySalary').value);
+            const resultElement = document.getElementById('result');
+
+            if (isNaN(yearsOfService) || isNaN(monthlySalary)) {
+                resultElement.textContent = "Please enter valid numeric values for years of service and monthly salary.";
+                return;
+            }
+
+            let bonus = 0;
+
+            if (yearsOfService >= 1 && yearsOfService <= 5) {
+                bonus = 0.5 * monthlySalary;
+            } else if (yearsOfService >= 6 && yearsOfService <= 15) {
+                bonus = 0.75 * monthlySalary;
+            } else {
+                bonus = monthlySalary;
+            }
+
+            resultElement.textContent = `Mid-Year Bonus: $${bonus.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

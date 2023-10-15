@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Color Changer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+        }
+
+        #container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #444;
+        }
+
+        input[type="number"] {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #errorMsg {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Background Color Changer</h1>
+        <p>Enter a number from 0 to 9:</p>
+        <input type="number" id="numberInput">
+        <button onclick="changeBackgroundColor()">Change Background Color</button>
+        <p id="errorMsg" style="color: red;"></p>
+    </div>
+
+    <script>
+        function changeBackgroundColor() {
+            const numberInput = document.getElementById('numberInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const body = document.body;
+
+            // Define the color mapping
+            const colors = [
+                "Black",
+                "Blue",
+                "Green",
+                "Cyan",
+                "Red",
+                "Magenta",
+                "Gray",
+                "Brown",
+                "White",
+                "Yellow"
+            ];
+
+            if (numberInput >= 0 && numberInput <= 9) {
+                body.style.backgroundColor = colors[numberInput];
+                errorMsg.textContent = ""; // Clear any previous error message
+            } else {
+                errorMsg.textContent = "Invalid input. Please enter a number from 0 to 9.";
+                body.style.backgroundColor = ""; // Reset the background color
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        #container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #0078d4;
+        }
+
+        p {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0078d4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005ba0;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Credit Card Validator</h2>
+        <p>Cardholder's Name: <input type="text" id="cardName" placeholder="Carlo Lim"></p>
+        <p>Card Number: <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000"></p>
+        <p>Card Type: <input type="text" id="cardType" placeholder="VISA/Master/JCB"></p>
+        <p>Expiry Date (MM/YY): <input type="text" id="expiryDate" placeholder="MM/YY"></p>
+        <button onclick="validateCreditCard()">Validate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function validateCreditCard() {
+            var cardName = document.getElementById('cardName').value;
+            var cardNumber = document.getElementById('cardNumber').value;
+            var cardType = document.getElementById('cardType').value;
+            var expiryDate = document.getElementById('expiryDate').value;
+
+            var validCardNumber = /^\d{4}[\s\-]?\d{4}[\s\-]?\d{4}[\s\-]?\d{4}$/;
+            var validExpiryDate = /^(0[1-9]|1[0-2])\/\d{2}$/;
+
+            var resultElement = document.getElementById('result');
+            resultElement.innerHTML = '';
+
+            if (cardName.trim() === '') {
+                resultElement.innerHTML = 'Cardholder\'s Name is required.';
+            } else if (!cardNumber.match(validCardNumber)) {
+                resultElement.innerHTML = 'Invalid Card Number format.';
+            } else if (!validExpiryDate.test(expiryDate)) {
+                resultElement.innerHTML = 'Invalid Expiry Date format. Use MM/YY format.';
+            } else {
+                resultElement.innerHTML = 'Credit card information is valid.';
+            }
+        }
+    </script>
+</body>
+</html>

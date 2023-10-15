@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Philippine Telephone and Postal Code Validator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        #container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #0078d4;
+        }
+
+        p {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0078d4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005ba0;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Philippine Telephone and Postal Code Validator</h2>
+        <p>Telephone Number: <input type="text" id="phoneNumber" placeholder="e.g., 02-123-4567 or +63-2-123-4567"></p>
+        <p>Postal Code: <input type="text" id="postalCode" placeholder="e.g., 1000"></p>
+        <button onclick="validateInput()">Validate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function validateInput() {
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            var postalCode = document.getElementById('postalCode').value;
+
+            var validPhoneNumber = /^(\+\d{2}-\d{1,4}-\d{4}|\d{2}-\d{1,4}-\d{4})$/;
+            var validPostalCode = /^\d{4}$/;
+
+            var resultElement = document.getElementById('result');
+            resultElement.innerHTML = '';
+
+            if (!validPhoneNumber.test(phoneNumber)) {
+                resultElement.innerHTML += 'Invalid Telephone Number format. Use +63-2-123-4567 or 02-123-4567 format.<br>';
+            }
+
+            if (!validPostalCode.test(postalCode)) {
+                resultElement.innerHTML += 'Invalid Postal Code format. Use 4 digits (e.g., 1000).<br>';
+            }
+
+            if (resultElement.innerHTML === '') {
+                resultElement.innerHTML = 'Both Telephone Number and Postal Code are valid.';
+            }
+        }
+    </script>
+</body>
+</html>

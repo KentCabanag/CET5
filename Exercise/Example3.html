@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        #container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #output {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0078d4;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0078d4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005ba0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>Number to Word Converter</h2>
+        <script>
+            var n = prompt('Enter an integer from 0-9 only:', '');
+            document.write('<p><strong>Input number:</strong> ' + n + '</p>');
+            document.write('<p><strong>Equivalent number word:</strong> ');
+
+            switch (n) {
+                case '0':
+                    document.write('Zero');
+                    break;
+                case '1':
+                    document.write('One');
+                    break;
+                case '2':
+                    document.write('Two');
+                    break;
+                case '3':
+                    document.write('Three');
+                    break;
+                case '4':
+                    document.write('Four');
+                    break;
+                case '5':
+                    document.write('Five');
+                    break;
+                case '6':
+                    document.write('Six');
+                    break;
+                case '7':
+                    document.write('Seven');
+                    break;
+                case '8':
+                    document.write('Eight');
+                    break;
+                case '9':
+                    document.write('Nine');
+                    break;
+                default:
+                    document.write('Invalid Input');
+                    break;
+            }
+            document.write('</p>');
+        </script>
+        <button onclick="window.location.reload();">Type again</button>
+    </div>
+</body>
+</html>
