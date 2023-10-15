@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Basic styling for the calendar */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Calendar</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body">
+        </tbody>
+    </table>
+    <script>
+        // Function to generate a calendar for the given month and year
+        function generateCalendar(month, year) {
+            const calendarBody = document.getElementById("calendar-body");
+            calendarBody.innerHTML = ""; // Clear the previous content
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+
+            let currentDate = new Date(firstDay);
+            while (currentDate <= lastDay) {
+                const row = document.createElement("tr");
+                for (let i = 0; i < 7; i++) {
+                    const cell = document.createElement("td");
+                    if (currentDate >= firstDay && currentDate <= lastDay) {
+                        cell.textContent = currentDate.getDate();
+                    }
+                    row.appendChild(cell);
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+                calendarBody.appendChild(row);
+            }
+        }
+
+        // Call the function to generate the current month's calendar
+        const today = new Date();
+        generateCalendar(today.getMonth(), today.getFullYear());
+    </script>
+</body>
+</html>

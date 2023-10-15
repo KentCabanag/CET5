@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+
+        }
+        .form-group input {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            width: 48%;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="login.php" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="userid">User ID:</label>
+                <input type="text" id="userid" name="userid" required>
+                <span id="useridError" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span id="passwordError" class="error"></span>
+            </div>
+            <div class="btn-container">
+                <button type="submit" class="btn">Log In</button>
+                <button type="reset" class="btn">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var userid = document.getElementById("userid").value;
+            var password = document.getElementById("password").value;
+            var useridError = document.getElementById("useridError");
+            var passwordError = document.getElementById("passwordError");
+            var isValid = true;
+
+            // Reset error messages
+            useridError.textContent = "";
+            passwordError.textContent = "";
+
+            // User ID numeric validation
+            if (isNaN(userid)) {
+                useridError.textContent = "User ID must be a number";
+                isValid = false;
+            }
+
+            // Simple validation for User ID (you can add more complex validation)
+            if (userid.trim() === "") {
+                useridError.textContent = "User ID is required";
+                isValid = false;
+            }
+
+            // Password length validation
+            if (password.length < 4 || password.length > 15) {
+                passwordError.textContent = "Password must be between 4 and 15 characters";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>

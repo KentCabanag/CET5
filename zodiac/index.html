@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="box">
+        <h1>What is your constellation sign?</h1>
+    </div>
+    <h2>Enter your birthday.</h2>
+    <p>Month:<input type="number" id="month" min="1" max="12"></p>
+    <p>Day:<input type="number" id="day" min="1" max="31"></p>
+    <p>Year:<input type="number" id="year" min="1962" max="2023"></p>
+    <a id="animated" onclick="zodiac()" class="button">Find your Astrological sign!</a>
+    <a onclick="clearFields()" id="animated" class="button">Clear</a>  
+    <p id="photo"></p>
+    <p id="space">Your Astrological sign is <span id="output"></span></p>
+    <p id="characteristic"></p>
+    <div id="image-container">
+    <img id="image" src="http://sweetclipart.com/multisite/sweetclipart/files/astrology_set_clipart_color_2.png" width="32%">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
