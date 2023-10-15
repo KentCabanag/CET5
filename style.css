@@ -1,0 +1,63 @@
+/* Apply styles to the body and header */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    background-image: url('background.gif');
+    background-size: cover; /* You can adjust this to your preferences */
+    background-repeat: no-repeat;
+  }
+  
+  h1 {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    
+  }
+  
+  /* Style the input and button */
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="date"] {
+    width: 200px;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Style the results paragraph */
+  #results {
+    margin: 20px;
+    font-size: 18px;
+    color: #434141;
+  }
+  
+  /* Add styles for the container */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff00;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
