@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> ASTRO - Find your Sign </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="astro.css">
+    <link rel="shortcut icon" href="   " type="image/x-icon">
+
+</head>
+
+<body>
+
+    <nav>
+        <img href="index.html" src="   " class="logo">
+    </nav>
+
+    <div class="main">
+        <div class="box">  
+
+            <div id="astro" class="m_center m_column">
+                <h1> PUTANGINAMO MAG ENTER KA NG BDAY </h1>    
+            </div>
+
+            <div id="content">
+                <div id="background">
+                    <h2>Welcome to our Astrology and Birth Insight tool! Ever wondered what your astrological sign is, what your 
+                        zodiac sign means, or the significance of your birth flower and birthstone? Simply enter your birthdate, 
+                        and we'll reveal the secrets of the stars that are uniquely associated with you. </h2>
+
+                    <p> Month: <input type="number" id="month" min="1" max="12"> 
+                        Day: <input type="number" id="day" min="1" max="31"> 
+                        Year: <input type="number" id="year" min="1900" max="2099">
+                    </p>
+
+            
+                    <a  id="animated" onclick="zodiac()" class="button">Find your Zodiac sign!</a>
+                    <a onclick="clearFields()" id="animated" class="button">Clear</a>  
+                </div>
+            </div>
+
+            <div id="image-container">
+                <p id="photo"></p>
+                <p id="space">Your Western Zodiac sign is: <span id="output"></span></p>
+                <p id="characteristic"></p>
+                <p id="space">Your Chinese Zodiac sign is: <span id="zodiac-output"></span></p>
+            </div>
+
+          
+            <div id="picture">
+                <img id="image" src="http://sweetclipart.com/multisite/sweetclipart/files/astrology_set_clipart_color_2.png" width="32%">
+            </div>
+                          
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>  
+</html>
