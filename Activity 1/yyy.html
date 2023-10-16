@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Birth Information</title>
+</head>
+<body>
+  <h1>Birth Information</h1>
+  <p>Enter your birth date:</p>
+  <label for="month">Month:</label>
+  <select id="month">
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select>
+  <br>
+  <label for="day">Day:</label>
+  <input type="number" id="day" min="1" max="31">
+  <br>
+  <label for="year">Year:</label>
+  <input type="number" id="year">
+  <br>
+  <button onclick="calculateInfo()">Calculate</button>
+  <p>Your Astrological Sign: <span id="astrologicalSign"></span></p>
+  <p>Chinese Zodiac Sign: <span id="zodiacSign"></span></p>
+  <p>Birthstone: <span id="birthstone"></span></p>
+  <p>Birth Flower: <span id="birthflower"></span></p>
+
+  <script>
+    function calculateInfo() {
+      const month = document.getElementById('month').value;
+      const day = parseInt(document.getElementById('day').value);
+      const year = parseInt(document.getElementById('year').value);
+
+      // Astrological Sign
+      const astrologicalSigns = {
+        Sagittarius: { start: [11, 22], end: [12, 21] },
+        Capricorn: { start: [12, 22], end: [1, 20] },
+        Aquarius: { start: [1, 21], end: [2, 19] },
+        Pisces: { start: [2, 20], end: [3, 20] },
+        Aries: { start: [3, 21], end: [4, 19] },
+        Taurus: { start: [4, 20], end: [5, 20] },
+        Gemini: { start: [5, 21], end: [6, 21] },
+        Cancer: { start: [6, 22], end: [7, 21] },
+        Leo: { start: [7, 22], end: [8, 21] },
+        Virgo: { start: [8, 22], end: [9, 22] },
+        Libra: { start: [9, 23], end: [10, 22] },
+        Scorpio: { start: [10, 23], end: [11, 21] },
+      };
+
+      let astrologicalSign = '';
+      for (const sign in astrologicalSigns) {
+        const { start, end } = astrologicalSigns[sign];
+        if (
+          (month === 'January' && ((month === 'January' && day >= start[0] && day <= start[1]) || (month === 'December' && day >= end[0] && day <= end[1]))) ||
+          (month !== 'January' && month !== 'December' && day >= start[0] && day <= end[1])
+        ) {
+          astrologicalSign = sign;
+          break;
+        }
+      }
+
+      // Chinese Zodiac Sign
+      const chineseZodiac = {
+        Rat: [1972, 1984, 1996, 2008],
+        Ox: [1973, 1985, 1997, 2009],
+        Tiger: [1962, 1974, 1986, 1998],
+        Rabbit: [1963, 1975, 1987, 1999],
+        Dragon: [1964, 1976, 1988, 2000],
+        Snake: [1965, 1977, 1989, 2001],
+        Horse: [1966, 1978, 1990, 2002],
+        Sheep: [1967, 1979, 1991, 2003],
+        Monkey: [1968, 1980, 1992, 2004],
+        Rooster: [1969, 1981, 1993, 2005],
+        Dog: [1970, 1982, 1994, 2006],
+        Pig: [1971, 1983, 1995, 2007],
+      };
+
+      let zodiacSign = '';
+      for (const sign in chineseZodiac) {
+        if (chineseZodiac[sign].includes(year)) {
+          zodiacSign = sign;
+          break;
+        }
+      }
+
+      // Birthstone
+      const birthstones = {
+        January: 'Garnet',
+        February: 'Amethyst',
+        March: 'Aquamarine',
+        April: 'Diamond',
+        May: 'Emerald',
+        June: 'Pearl',
+        July: 'Ruby',
+        August: 'Peridot',
+        September: 'Sapphire',
+        October: 'Opal',
+        November: 'Topaz',
+        December: 'Turquoise',
+      };
+
+      const birthstone = birthstones[month];
+
+      // Birth Flower
+      const birthflowers = {
+        January: 'Carnation',
+        February: 'Violet',
+        March: 'Jonquil',
+        April: 'Sweet Pea',
+        May: 'Lily of the Valley',
+        June: 'Rose',
+        July: 'Larkspur',
+        August: 'Gladiola',
+        September: 'Aster',
+        October: 'Calendula',
+        November: 'Chrysanthemum',
+        December: 'Narcissus',
+      };
+
+      const birthflower = birthflowers[month];
+
+      // Update the displayed information
+      document.getElementById('astrologicalSign').textContent = astrologicalSign;
+      document.getElementById('zodiacSign').textContent = zodiacSign;
+      document.getElementById('birthstone').textContent = birthstone;
+      document.getElementById('birthflower').textContent = birthflower;
+    }
+  </script>
+</body>
+</html>
