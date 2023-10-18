@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Astrology and Zodiac Sign Finder</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Astrology and Zodiac Sign Finder</h1>
+
+    <label for="birthdate">Enter your birthdate: </label>
+    <input type="date" id="birthdate">
+    <button onclick="findSigns()">Find Signs</button>
+
+    <p id="results"></p>
+
+    <script>
+      function findSigns() {
+        const birthdate = new Date(document.getElementById("birthdate").value);
+        const birthMonth = birthdate.getMonth() + 1; // Month is 0-indexed
+        const birthDay = birthdate.getDate();
+        const birthYear = birthdate.getFullYear();
+        const results = document.getElementById("results");
+
+        // Astrological sign calculation
+        const astroSigns = [
+          { sign: "Capricorn", start: { month: 12, day: 22 }, end: { month: 1, day: 20 }, zodiac: "Rabbit" },
+          { sign: "Aquarius", start: { month: 1, day: 21 }, end: { month: 2, day: 19 }, zodiac: "Dragon" },
+          { sign: "Pisces", start: { month: 2, day: 20 }, end: { month: 3, day: 20 }, zodiac: "Snake" },
+          { sign: "Aries", start: { month: 3, day: 21 }, end: { month: 4, day: 19 }, zodiac: "Horse" },
+          { sign: "Taurus", start: { month: 4, day: 20 }, end: { month: 5, day: 20 }, zodiac: "Sheep" },
+          { sign: "Gemini", start: { month: 5, day: 21 }, end: { month: 6, day: 21 }, zodiac: "Monkey" },
+          { sign: "Cancer", start: { month: 6, day: 22 }, end: { month: 7, day: 21 }, zodiac: "Rooster" },
+          { sign: "Leo", start: { month: 7, day: 22 }, end: { month: 8, day: 21 }, zodiac: "Dog" },
+          { sign: "Virgo", start: { month: 8, day: 22 }, end: { month: 9, day: 22 }, zodiac: "Pig" },
+          { sign: "Libra", start: { month: 9, day: 23 }, end: { month: 10, day: 22 }, zodiac: "Rat" },
+          { sign: "Scorpio", start: { month: 10, day: 23 }, end: { month: 11, day: 21 }, zodiac: "Ox" },
+          { sign: "Sagittarius", start: { month: 11, day: 22 }, end: { month: 12, day: 21 }, zodiac: "Tiger" }
+        ];
+
+        let astroSign = null;
+        for (const signData of astroSigns) {
+          if (
+            (birthMonth === signData.start.month && birthDay >= signData.start.day) ||
+            (birthMonth === signData.end.month && birthDay <= signData.end.day)
+          ) {
+            astroSign = signData;
+            break;
+          }
+        }
+
+        if (astroSign) {
+          const birthstoneAndFlower = getBirthstoneAndFlower(birthMonth);
+          const chineseZodiacSign = calculateChineseZodiacSign(birthYear);
+
+          results.innerHTML = `Your Astrological Sign: ${astroSign.sign}<br>
+            Chinese Zodiac Sign: ${chineseZodiacSign.name} (Inclusive Years: ${chineseZodiacSign.years})<br>
+            Birthstone: ${birthstoneAndFlower.birthstone}<br>
+            Birth Flower: ${birthstoneAndFlower.flower}`;
+        } else {
+          results.innerHTML = "Invalid birthdate. Please enter a valid date.";
+        }
+      }
+
+      function getBirthstoneAndFlower(month) {
+        const birthstonesAndFlowers = {
+          1: { birthstone: "Garnet", flower: "Carnation" },
+          2: { birthstone: "Amethyst", flower: "Violet" },
+          3: { birthstone: "Aquamarine", flower: "Jonquil" },
+          4: { birthstone: "Diamond", flower: "Sweet Pea" },
+          5: { birthstone: "Emerald", flower: "Lily of the Valley" },
+          6: { birthstone: "Pearl", flower: "Rose" },
+          7: { birthstone: "Ruby", flower: "Larkspur" },
+          8: { birthstone: "Peridot", flower: "Gladiola" },
+          9: { birthstone: "Sapphire", flower: "Aster" },
+          10: { birthstone: "Opal", flower: "Calendula" },
+          11: { birthstone: "Topaz", flower: "Chrysanthemum" },
+          12: { birthstone: "Turquoise", flower: "Narcissus" },
+        };
+
+        return birthstonesAndFlowers[month];
+      }
+
+      function calculateChineseZodiacSign(year) {
+        const chineseZodiacSigns = [
+          { name: "Rat", years: "1924,1936,1948,1960,1972,1984,1996,2008,2020" },
+          { name: "Ox", years: "1925,1937,1949,1961,1973,1985,1997,2009,2021" },
+          { name: "Tiger", years: "1926,1938,1950,1962,1974,1986,1998,2010,2022" },
+          { name: "Rabbit", years: "1927,1939,1951,1963,1975,1987,1999,2011,2023" },
+          { name: "Dragon", years: "1928,1940,1952,1964,1976,1988,2000,2012,2024" },
+          { name: "Snake", years: "1929,1941,1953,1965,1977,1989,2001,2013,2025" },
+          { name: "Horse", years: "1930,1942,1954,1966,1978,1990,2002,2014,2026" },
+          { name: "Sheep", years: "1931,1943,1955,1967,1979,1991,2003,2015,2027" },
+          { name: "Monkey", years: "1932,1944,1956,1968,1980,1992,2004,2016,2028" },
+          { name: "Rooster", years: "1933,1945,1957,1969,1981,1993,2005,2017,2029" },
+          { name: "Dog", years: "1934,1946,1958,1970,1982,1994,2006,2018,2030" },
+          { name: "Pig", years: "1935,1947,1959,1971,1983,1995,2007,2019,2031" },
+        ];
+
+        let chineseZodiac = null;
+        for (const signData of chineseZodiacSigns) {
+          if (signData.years.includes(year.toString())) {
+            chineseZodiac = signData;
+            break;
+          }
+        }
+
+        return chineseZodiac;
+      }
+    </script>
+  </div>
+</body>
+
+</html>
